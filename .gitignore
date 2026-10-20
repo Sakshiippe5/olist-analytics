@@ -1,0 +1,8 @@
+.env
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/raw/*.csv
+outputs/powerbi_export/
+*.pbix.bak

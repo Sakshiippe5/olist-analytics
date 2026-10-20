@@ -1,0 +1,8 @@
+segment,customers,revenue,avg_recency_days,avg_frequency,avg_monetary,pct_customers,pct_revenue
+At Risk,14784,4064667.8,443.21,1.07,274.94,15.84,30.74
+High-Value New,14481,3867673.08,141.22,1.0,267.09,15.51,29.25
+Need Attention,18064,2347234.22,269.47,1.0,129.94,19.35,17.75
+Hibernating,22559,1257986.93,444.7,1.0,55.76,24.16,9.51
+New Customers,21661,1202583.99,139.12,1.0,55.52,23.2,9.1
+Champions,931,305122.29,138.27,2.19,327.74,1.0,2.31
+Loyal Customers,878,176229.8,226.75,2.07,200.72,0.94,1.33
