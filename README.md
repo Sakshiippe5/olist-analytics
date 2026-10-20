@@ -21,7 +21,7 @@ An end-to-end analytics project on the [Olist Brazilian E-Commerce dataset](http
 | Top categories by revenue | Health Beauty, Watches Gifts, Bed Bath Table |
 | Top RFM segment | At Risk (30.74% of revenue from 15.84% of customers) |
 | At-risk customers | 14,784 (30.74% of revenue) |
-| Month-1 retention | X.XX% |
+| Month-1 retention | 0.48% |
 
 *Revenue = item price on delivered orders, excluding freight.*
 
