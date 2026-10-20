@@ -1,6 +1,6 @@
 # Sales & Customer Analytics Pipeline (Olist E-Commerce)
 
-An end-to-end analytics project on the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): a Python ETL loads ~100K orders into PostgreSQL, SQL views power the KPIs, Python handles RFM segmentation and cohort retention, and a Power BI dashboard presents the results.
+An end-to-end analytics project on the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce): a Python ETL loads ~100K orders into PostgreSQL, SQL views power the revenue and customer KPIs, Python handles RFM segmentation and cohort retention, and a Power BI dashboard presents the results.
 
 **Tech stack:** Python (Pandas, SQLAlchemy) · PostgreSQL · SQL (CTEs, joins, window functions) · Power BI
 
@@ -12,40 +12,60 @@ An end-to-end analytics project on the [Olist Brazilian E-Commerce dataset](http
 |---|---|
 | Delivered orders | 96,478 |
 | Revenue (BRL) | 13.22M |
-| Unique customers | ~93K |
+| Customers analysed | 93,358 |
 | Average order value | 137.04 |
 | Average review score | 4.08 / 5 |
 | Late deliveries | ~8% |
 | Average delivery time | 12.5 days |
 | Top states by revenue | SP, RJ, MG |
 | Top categories by revenue | Health Beauty, Watches Gifts, Bed Bath Table |
-| Top RFM segment | ___ (___% of revenue from ___% of customers) |
-| At-risk customers | ___ (___% of revenue) |
-| Month-1 retention | ___% |
+| Top RFM segment | At Risk (30.74% of revenue from 15.84% of customers) |
+| At-risk customers | 14,784 (30.74% of revenue) |
+| Month-1 retention | X.XX% |
 
 *Revenue = item price on delivered orders, excluding freight.*
+
+### Key Insights
+
+- **At-risk customers are the largest revenue pool.** 14,784 customers (15.84% of the base, average 443 days since their last order) generate 30.74% of revenue, so win-back campaigns target the biggest opportunity.
+- **High-Value New customers are a close second** at 29.25% of revenue (15.51% of customers). They are recent, big-basket buyers who have ordered once, so converting them into repeat buyers is the clearest growth lever.
+- **Champions are rare.** Repeat, recent, high-spend customers are 1.00% of customers and 2.31% of revenue, which shows how thin repeat purchasing is on the platform.
+- **Revenue is geographically concentrated.** São Paulo (SP) is far ahead of every other state, followed by RJ and MG.
+- **Month-1 retention is X.XX%**, confirming that most customers do not come back after their first order.
 
 ---
 
 ## Dashboard
 
 **Overview**
-![Overview](docs/page1_overview.png)
+![Overview](docs/Olive1.png)
 
 **Product Category**
-![Category](docs/page2_category.png)
+![Category](docs/Olive2.png)
 
 **Regional Performance**
-![Region](docs/page3_region.png)
+![Region](docs/Olive3.png)
 
 ---
 
 ## Customer Analysis (Python)
 
-**RFM segments:** customer share vs revenue share
+### RFM segments
+
+| Segment | Customers | % Customers | Revenue (BRL) | % Revenue |
+|---|---|---|---|---|
+| At Risk | 14,784 | 15.84% | 4,064,668 | 30.74% |
+| High-Value New | 14,481 | 15.51% | 3,867,673 | 29.25% |
+| Need Attention | 18,064 | 19.35% | 2,347,234 | 17.75% |
+| Hibernating | 22,559 | 24.16% | 1,257,987 | 9.51% |
+| New Customers | 21,661 | 23.20% | 1,202,584 | 9.10% |
+| Champions | 931 | 1.00% | 305,122 | 2.31% |
+| Loyal Customers | 878 | 0.94% | 176,230 | 1.33% |
+
 ![RFM](outputs/rfm_segments.png)
 
-**Cohort retention:** monthly retention by acquisition cohort
+### Cohort retention
+
 ![Cohort](outputs/cohort_retention_heatmap.png)
 
 ---
@@ -148,5 +168,5 @@ To build the dashboard, follow [`powerbi/powerbi_guide.md`](powerbi/powerbi_guid
 
 ## Notes
 
-- About 97% of customers placed a single order, so retention is low by nature, and RFM frequency uses fixed bins instead of quantiles.
+- Most customers place only one order, so retention is low by nature, and RFM frequency uses fixed bins instead of quantiles.
 - The dataset covers 2016 to 2018. Early 2016 and late 2018 have very few orders.
